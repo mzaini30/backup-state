@@ -9,12 +9,16 @@
 	}
 
 	const output = ref({})
+
+	async function getBack(){
+		output.value = await restore()
+	}
 </script>
 
 <template>
-	<p>{{ output.value || output }}</p>
+	<p>{{ output }}</p>
 	<button @click='backup(input, "state.txt")'>backup</button>
-	<button @click='restore(output)'>restore</button>
+	<button @click='getBack'>restore</button>
 </template>
 
 <style scoped="">

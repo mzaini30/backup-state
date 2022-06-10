@@ -5,22 +5,22 @@ export function backup(state, filename){
 	a.click()
 }
 
-export function restore(state){
-	const input = document.createElement('input')
-	input.type = 'file'
-	input.click()
+export function restore(){
+	return new Promise((resolve, reject) => {
+		const input = document.createElement('input')
+		input.type = 'file'
+		input.click()
 
-	let outcome
-	input.addEventListener('change', x => {
-		const {files} = x.target
-		const [file] = files
+		input.addEventListener('change', async x => {
+			const {files} = x.target
+			const [file] = files
 
-		const reader = new FileReader
-		reader.readAsText(file)
+			const reader = new FileReader
+			reader.readAsText(file)
 
-		reader.addEventListener('load', y => {
-			outcome = JSON.parse(reader.result)
-			state.value = outcome
+			reader.addEventListener('load', y => {
+				resolve(JSON.parse(reader.result))
+			})
 		})
 	})
 }
