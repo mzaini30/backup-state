@@ -1,6 +1,6 @@
 {
   "name": "backup-state",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Backup and restore state easily ",
   "main": "src/backup.js",
   "repository": {
