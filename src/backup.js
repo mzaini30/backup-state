@@ -1,11 +1,11 @@
 export function backup(state, filename){
-	let data = JSON.stringify(state, null, 2)
-	data = encodeURIComponent(data)
-	data = unescape(data)
-	data = window.btoa(data)
+	const blob = new Blob([JSON.stringify(state, null, 2)], {
+    type: 'application/json',
+  });
+  const url = URL.createObjectURL(blob)
 
 	const a = document.createElement('a')
-	a.href = `data:text/plain;charset=utf-8;base64,${data}`
+	a.href = url
 	a.download = filename
 	a.click()
 }
@@ -24,9 +24,8 @@ export function restore(){
 			reader.readAsText(file)
 
 			reader.addEventListener('load', y => {
-				let data = reader.result
-				data = escape(data)
-				data = encodeURIComponent(data)
+				let data
+				data = reader.result
 				data = JSON.parse(data)
 
 				resolve(data)
