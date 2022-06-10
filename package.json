@@ -1,13 +1,25 @@
 {
-  "name": "coba-vite-vue",
-  "private": true,
-  "version": "0.0.0",
+  "name": "backup-state",
+  "version": "0.0.1",
+  "description": "Backup and restore state easily ",
+  "main": "src/backup.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mzaini30/backup-state.git"
+  },
+  "keywords": ["vue", "state", "backup", "restore"],
+  "author": "Zen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mzaini30/backup-state/issues"
+  },
+  "homepage": "https://github.com/mzaini30/backup-state#readme",
   "scripts": {
     "dev": "vite",
     "build": "vite build && node afterBuild.mjs",
     "preview": "vite preview"
   },
-  "dependencies": {
+  "devDependencies": {
     "@unocss/reset": "^0.35.0",
     "@unocss/transformer-directives": "^0.35.1",
     "@vitejs/plugin-legacy": "^1.8.2",
@@ -24,9 +36,7 @@
     "vue": "^3.2.25",
     "vue-lazyload": "3.0.0-rc.2",
     "vue-router": "^4.0.15",
-    "vue-router-prefetch": "2"
-  },
-  "devDependencies": {
+    "vue-router-prefetch": "2",
     "@vitejs/plugin-vue": "^2.3.1",
     "vite": "^2.9.7"
   }

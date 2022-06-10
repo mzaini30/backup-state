@@ -1,14 +1,24 @@
-<template>
-	<div class='p-5'>
-		<h1 class='text-3xl text-zinc-500 mb-1'>Assalamualaikum</h1>
-		<p class="text-zinc-500">Welcome to this Vue template, cooked by Zen.</p>
-	</div>
+<script setup="">
+	import {backup, restore} from '/src/backup'
+	import {ref} from 'vue'
 
-	<img v-for='(_, n) in Array(5)' class="block mb-10 w-full h-auto" v-lazy='`https://http.cat/${n + 1}00.jpg`' alt="" />
+	const input = {
+		name: 'Zen',
+		address: 'Indonesia',
+		hobby: 'coding'
+	}
+
+	const output = ref({})
+</script>
+
+<template>
+	<p>{{ output.value || output }}</p>
+	<button @click='backup(input, "state.txt")'>backup</button>
+	<button @click='restore(output)'>restore</button>
 </template>
 
 <style scoped="">
-	* {
-		@apply italic text-center
+	button {
+		@apply m-1 hover:bg-gray-200 p-2 rounded
 	}
 </style>
