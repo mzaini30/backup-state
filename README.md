@@ -1,71 +1,45 @@
-# Vue Starter 
+# Backup State
 
-## Usibg Vue Editor
+Easily create backup and restore buttons.
 
-Add in `~/.bashrc`:
+## Installation
 
 ```bash
-export VUE_EDITOR=subl
+npm i backup-state
 ```
 
-## Place Vue Files and Markdown
-
-In `src/pages/`.
-
-## Place Static Files
-
-In `public/`.
-
-## Modify Base URL (for sitemap)
-
-In `vite.config.js`, in section:
-
-```javascript
-const hostname = 'http://localhost:3000/'
-```
-
-## Markdown File Example with Head
-
-```markdown
----
-title: About
----
-
-# This is about page
-
-Good
-```
-
-## Link to Other Page
-
-```html
-<router-link to="/about">About page</router-link>
-```
-
-## Using Head in Vue Page
+## Backup
 
 ```html
 <script setup="">
- import {Head} from '@vueuse/head'
+  import {backup} from 'backup-state'
+
+  const data = {
+    name: 'Zen',
+    location: 'Indonesia'
+  }
 </script>
 
 <template>
- <Head>
-  <title>Hi...</title>
- </Head>
-
- <p>This is home</p>
+  <button @click='backup(data, "data.txt")'>backup</button>
 </template>
 ```
 
-## Using Vue Lazy Load
+## Restore
 
 ```html
-<script setup>
-  const image = '/cat.jpg'
+<script setup="">
+  import {restore} from 'backup-state'
+  import {ref} from 'vue'
+  
+  const data = ref({})
+
+  async function getNow(){
+    data.value = await restore()
+  }
 </script>
 
 <template>
-  <img v-lazy='image' />
+  <button @click='getNow'>restore</button>
 </template>
 ```
